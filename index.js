@@ -154,6 +154,7 @@ let spaceStation = new SpaceStation(
 
 function setup() {
   createCanvas(width, height);
+  canvas.parent(document.querySelector("#game"));
   noStroke();
 }
 
