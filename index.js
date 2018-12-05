@@ -183,7 +183,7 @@ function setup() {
 
 function draw() {
   if (!game.gameOver) {
-    background(bg);
+    background("black");
     player.draw();
     player.move({ x: mouseX, y: mouseY });
     player.checkBounds();
