@@ -182,32 +182,7 @@ function setup() {
 }
 
 function draw() {
-  if (!game.gameOver) {
-    background("black");
-    player.draw();
-    player.move({ x: mouseX, y: mouseY });
-    player.checkBounds();
-    aliens.forEach(alien => alien.draw());
-    aliens.forEach(alien => alien.move(bomb || player));
-    asteroids.forEach(asteroid => asteroid.draw());
-    asteroids.forEach(asteroid => asteroid.move());
-    if (bomb) {
-      bomb.draw();
-      bomb.ttl--;
-      if (bomb.ttl < 0) {
-        bomb = undefined;
-      }
-    }
-    checkAsteroidOutOfBounds();
-    adjust();
-    if (health.value > 0) {
-      scoreboard.updateScore();
-    }
-    scoreboard.retrieveScore();
-    if (health.value === 0) {
-      game.endGame();
-    }
-  }
+  background(bg);
 }
 
 function adjust() {
