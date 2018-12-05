@@ -175,7 +175,7 @@ let spaceStation = new SpaceStation(
 let game = new Game();
 
 function setup() {
-  bg = loadImage("gameover.png");
+  bg = loadImage("gameover.jpg");
   const canvas = createCanvas(800, 600);
   canvas.parent('sketch');
   noStroke();
