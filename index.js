@@ -182,7 +182,7 @@ function setup() {
 }
 
 function draw() {
-  //if (!game.gameOver) {
+  if (!game.gameOver) {
     background(bg);
     player.draw();
     player.move({ x: mouseX, y: mouseY });
@@ -207,7 +207,7 @@ function draw() {
     if (health.value === 0) {
       game.endGame();
     }
-  //}
+  }
 }
 
 function adjust() {
