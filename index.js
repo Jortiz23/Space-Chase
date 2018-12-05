@@ -9,7 +9,7 @@ class Game {
   }
   endGame() {
     this.gameOver = true;
-    background(bg)
+    background(bg);
     textFont("Avenir");
     textSize(120);
     textAlign(CENTER, CENTER);
