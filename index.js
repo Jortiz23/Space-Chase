@@ -185,7 +185,7 @@ function setup() {
 function draw() {
   if (!game.gameOver){
   if(health.value > 0){
-  background("black");
+  background(bg);
   player.draw();
   player.move({ x: mouseX, y: mouseY });
   player.checkBounds();
