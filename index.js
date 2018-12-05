@@ -1,6 +1,6 @@
 let width = 800;
 let height = 600;
-let bg; 
+let bg;
 
 class Game {
   constructor() {
@@ -9,15 +9,13 @@ class Game {
   }
   endGame() {
     this.gameOver = true;
-    background(bg);
-    textFont("Avenir");
+    //textFont("Avenir");
     textSize(120);
     textAlign(CENTER, CENTER);
     fill("white");
     text("GAME OVER", width / 2, height / 2);
     textSize(50);
-    text("Click to play again", width / 2, height / 2);
-    textAlign(LEFT, LEFT);
+    text("Click to play again", width / 2, height / 2+100);
   }
   resetGame() {
     health.value = 100;
@@ -32,7 +30,6 @@ class Game {
     ctx.font = "30px VT323";
   }
 }
-
 class Character {
   constructor(x, y, color, radius, speed) {
     Object.assign(this, { x, y, color, radius, speed });
@@ -176,39 +173,40 @@ let spaceStation = new SpaceStation(
   10
 );
 let game = new Game();
+
 function setup() {
-  bg = loadImage("gameover.jpg");
-  createCanvas(width, height);
+  bg = loadImage("gameover.png");
+  const canvas = createCanvas(800, 600);
+  canvas.parent('sketch');
   noStroke();
 }
 
 function draw() {
-  if (!game.gameOver){
-  if(health.value > 0){
-  background(bg);
-  player.draw();
-  player.move({ x: mouseX, y: mouseY });
-  player.checkBounds();
-  aliens.forEach(alien => alien.draw());
-  aliens.forEach(alien => alien.move(bomb || player));
-  asteroids.forEach(asteroid => asteroid.draw());
-  asteroids.forEach(asteroid => asteroid.move());
-  if (bomb) {
-    bomb.draw();
-    bomb.ttl--;
-    if (bomb.ttl < 0) {
-      bomb = undefined;
+  if (!game.gameOver) {
+    background("black");
+    player.draw();
+    player.move({ x: mouseX, y: mouseY });
+    player.checkBounds();
+    aliens.forEach(alien => alien.draw());
+    aliens.forEach(alien => alien.move(bomb || player));
+    asteroids.forEach(asteroid => asteroid.draw());
+    asteroids.forEach(asteroid => asteroid.move());
+    if (bomb) {
+      bomb.draw();
+      bomb.ttl--;
+      if (bomb.ttl < 0) {
+        bomb = undefined;
+      }
     }
-  }
-  checkAsteroidOutOfBounds();
-  adjust();
-  if (health.value > 0) {
-    scoreboard.updateScore();
-  }
+    checkAsteroidOutOfBounds();
+    adjust();
+    if (health.value > 0) {
+      scoreboard.updateScore();
+    }
     scoreboard.retrieveScore();
-  if (health.value === 0){
-    game.endGame();
-  }
+    if (health.value === 0) {
+      game.endGame();
+    }
   }
 }
 
@@ -243,6 +241,9 @@ function mouseClicked() {
     bomb = new Character(player.x, player.y, "grey", 10, 0);
     bomb.ttl = frameRate() * 5;
   }
+  if(game.gameOver){
+    game.resetGame;
+  }
 }
 
 function checkAsteroidOutOfBounds() {
@@ -268,19 +269,17 @@ function checkAsteroidOutOfBounds() {
     }
   }
 }
-}
-function mouseClick(event) { //eslint-disable-line no-unused-vars
-    if (gameOver) {
-        resetGame();
-    } else {
-        if (game.pauseGame) {
-            backgroundMusic.play();
-            requestAnimationFrame(game.drawScene.bind(game));
-        }
-        game.pauseGame = !game.pauseGame;
+
+function mouseClick(event) {
+  //eslint-disable-line no-unused-vars
+  if (gameOver) {
+    resetGame();
+  } else {
+    if (game.pauseGame) {
+      backgroundMusic.play();
+      requestAnimationFrame(game.drawScene.bind(game));
     }
+    game.pauseGame = !game.pauseGame;
+  }
 }
 
-function resetGame(){
-  health.value = 100;
-}
