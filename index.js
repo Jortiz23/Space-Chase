@@ -1,13 +1,37 @@
-let canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
-function paintCanvas() {
-  let img = document.getElementById("galaxy");
-  ctx.drawImage(img, W/2, H/2);
-}
-
 let width = 800;
 let height = 600;
-let gameOver = false;
+let bg; 
+
+class Game {
+  constructor() {
+    this.gameOver = false;
+    this.pauseGame = false;
+  }
+  endGame() {
+    this.gameOver = true;
+    background(bg)
+    textFont("Avenir");
+    textSize(120);
+    textAlign(CENTER, CENTER);
+    fill("white");
+    text("GAME OVER", width / 2, height / 2);
+    textSize(50);
+    text("Click to play again", width / 2, height / 2);
+    textAlign(LEFT, LEFT);
+  }
+  resetGame() {
+    health.value = 100;
+    scoreboard.resetScore();
+    this.gameOver = false;
+  }
+  loadPauseScreen() {
+    ctx.font = "120px VT323";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2);
+    ctx.font = "30px VT323";
+  }
+}
 
 class Character {
   constructor(x, y, color, radius, speed) {
@@ -151,14 +175,15 @@ let spaceStation = new SpaceStation(
   10,
   10
 );
-
+let game = new Game();
 function setup() {
+  bg = loadImage("gameover.jpg");
   createCanvas(width, height);
-  canvas.parent(document.querySelector("#game"));
   noStroke();
 }
 
 function draw() {
+  if (!game.gameOver){
   if(health.value > 0){
   background("black");
   player.draw();
@@ -180,10 +205,10 @@ function draw() {
   if (health.value > 0) {
     scoreboard.updateScore();
   }
-  else {
-    scoreboard.resetScore();
+    scoreboard.retrieveScore();
+  if (health.value === 0){
+    game.endGame();
   }
-  scoreboard.retrieveScore();
   }
 }
 
@@ -243,7 +268,7 @@ function checkAsteroidOutOfBounds() {
     }
   }
 }
-
+}
 function mouseClick(event) { //eslint-disable-line no-unused-vars
     if (gameOver) {
         resetGame();
