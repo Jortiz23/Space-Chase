@@ -183,6 +183,9 @@ function setup() {
 
 function draw() {
   background(bg);
+  player.draw();
+  player.move({ x: mouseX, y: mouseY });
+  player.checkBounds();
 }
 
 function adjust() {
