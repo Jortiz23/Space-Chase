@@ -1,6 +1,13 @@
 let width = 800;
 let height = 600;
 let bg;
+let player;
+let aliens;
+let asteroids;
+let bomb;
+let scoreboard;
+let spaceStation;
+let game;
 
 class Game {
   constructor() {
@@ -15,20 +22,17 @@ class Game {
     fill("white");
     text("GAME OVER", width / 2, height / 2);
     textSize(50);
-    text("Click to play again", width / 2, height / 2+100);
+    text("Click to play again", width / 2, height / 2 + 100);
+    noLoop();
   }
   resetGame() {
-    health.value = 100;
+    health.value += 100;
     scoreboard.resetScore();
     this.gameOver = false;
+    createCharacters();
+    loop();
   }
-  loadPauseScreen() {
-    ctx.font = "120px VT323";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2);
-    ctx.font = "30px VT323";
-  }
+  loadPauseScreen() {}
 }
 class Character {
   constructor(x, y, color, radius, speed) {
@@ -153,31 +157,11 @@ class SpaceStation extends Powerup {
   }
 }
 
-const player = new Character(30, 30, "blue", 10, 0.05);
-const aliens = [
-  new Character(300, 0, "rgb(250,190,80)", 17, 0.01),
-  new Character(300, 300, "rgb(190,80,250)", 17, 0.03),
-  new Character(300, 200, "rgb(80,250,190)", 17, 0.02)
-];
-const asteroids = [
-  new Asteroid(400, 0, "brown", 15, -3, 1),
-  new Asteroid(300, 0, "brown", 15, 2, 8),
-  new Asteroid(200, 0, "brown", 15, 3, 5)
-];
-let bomb;
-let scoreboard = new Scoreboard();
-let spaceStation = new SpaceStation(
-  Math.random * width,
-  Math.random * height,
-  10,
-  10
-);
-let game = new Game();
-
 function setup() {
   bg = loadImage("gameover.jpg");
   const canvas = createCanvas(800, 600);
-  canvas.parent('sketch');
+  canvas.parent("sketch");
+  createCharacters();
   noStroke();
 }
 
@@ -236,12 +220,12 @@ function pushOff(c1, c2, isPlayer) {
 }
 
 function mouseClicked() {
-  if (!bomb) {
+  if (!bomb && !game.gameOver) {
     bomb = new Character(player.x, player.y, "grey", 10, 0);
     bomb.ttl = frameRate() * 5;
   }
-  if(game.gameOver){
-    game.resetGame;
+  if (game.gameOver) {
+    game.resetGame();
   }
 }
 
@@ -261,7 +245,7 @@ function checkAsteroidOutOfBounds() {
         "brown",
         15,
         Math.pow(-1, Math.floor(1 + Math.random() * 2)) *
-          (1 + Math.random() * 8),
+        (1 + Math.random() * 8),
         1 + Math.random() * 8
       );
       asteroids.push(newAsteroid);
@@ -269,16 +253,24 @@ function checkAsteroidOutOfBounds() {
   }
 }
 
-function mouseClick(event) {
-  //eslint-disable-line no-unused-vars
-  if (gameOver) {
-    resetGame();
-  } else {
-    if (game.pauseGame) {
-      backgroundMusic.play();
-      requestAnimationFrame(game.drawScene.bind(game));
-    }
-    game.pauseGame = !game.pauseGame;
-  }
+function createCharacters() {
+  player = new Character(400, 300, "blue", 10, 0.05);
+  aliens = [
+    new Character(0, 0, "rgb(250,190,80)", 17, 0.01),
+    new Character(0, 600, "rgb(190,80,250)", 17, 0.03),
+    new Character(800, 600, "rgb(80,250,190)", 17, 0.02)
+  ];
+  asteroids = [
+    new Asteroid(400, 0, "brown", 15, -3, 1),
+    new Asteroid(300, 0, "brown", 15, 2, 8),
+    new Asteroid(200, 0, "brown", 15, 3, 5)
+  ];
+  scoreboard = new Scoreboard();
+  spaceStation = new SpaceStation(
+    Math.random * width,
+    Math.random * height,
+    10,
+    10
+  );
+  game = new Game();
 }
-
