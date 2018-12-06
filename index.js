@@ -44,7 +44,7 @@ class Character {
   draw() {
     //image(this.img, this.x, this.y, this.radius*2, this.radius*2);
     fill(this.color)
-    ellipse(x,y,radius)  }
+    ellipse(this.x,this.y,this.radius)  }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
     this.y += (target.y - this.y) * this.speed;
