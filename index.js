@@ -42,7 +42,9 @@ class Character {
     Object.assign(this, { x, y, img, radius, speed });
   }
   draw() {
-    image(img, x, y, radius*2, radius*2);
+    fill(img);
+    ellipse(x, y, radius);
+    //image(img, x, y, radius*2, radius*2);
   }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
@@ -258,11 +260,11 @@ function checkAsteroidOutOfBounds() {
 }
 
 function createCharacters() {
-  player = new Character(400, 300, playerSprite, 10, 0.05);
-  aliens = [
-    new Character(0, 0, alienSprite, 17, 0.01),
-    new Character(0, 600, alienSprite, 17, 0.03),
-    new Character(800, 600, alienSprite, 17, 0.02)
+  const player = new Character(30, 30, "blue", 10, 0.05);
+  const aliens = [
+    new Character(300, 0, "rgb(250,190,80)", 17, 0.01),
+    new Character(300, 300, "rgb(190,80,250)", 17, 0.03),
+    new Character(300, 200, "rgb(80,250,190)", 17, 0.02)
   ];
   asteroids = [
     new Asteroid(600, 0, "brown", 15, -3, 1),
