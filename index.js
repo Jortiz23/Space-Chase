@@ -1,6 +1,5 @@
 let width = 800;
 let height = 600;
-let bg;
 let alienSprite;
 let playerSprite;
 let asteroidSprite;
@@ -43,7 +42,7 @@ class Character {
     Object.assign(this, { x, y, color, radius, speed });
   }
   draw() {
-    //image(this.img, this.x, this.y, this.radius*2, this.radius*2);
+    image(this.img, this.x, this.y, this.radius*2, this.radius*2);
     fill(this.color)
     ellipse(this.x,this.y,this.radius*2)  }
   move(target) {
