@@ -28,6 +28,7 @@ class Game {
   resetGame() {
     health.value += 100;
     scoreboard.resetScore();
+    bomb = undefined;
     this.gameOver = false;
     createCharacters();
     loop();
@@ -262,8 +263,10 @@ function createCharacters() {
   ];
   asteroids = [
     new Asteroid(600, 0, "brown", 15, -3, 1),
-    new Asteroid(100, 0, "brown", 15, 8, 8),
-    new Asteroid(200, 0, "brown", 15, 3, 5)
+    new Asteroid(200, 0, "brown", 15, 8, 8),
+    new Asteroid(0, 0, "brown", 15, 2, 8),
+    new Asteroid(800, 0, "brown", 15, -8, 5),
+    new Asteroid(400, 0, "brown", 15, 3, 5)
   ];
   scoreboard = new Scoreboard();
   spaceStation = new SpaceStation(
