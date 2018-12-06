@@ -43,7 +43,7 @@ class Character {
     Object.assign(this, { x, y, color, radius, speed });
   }
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    //image(this.image, this.x, this.y, this.radius*2, this.radius*2);
     fill(this.color)
     ellipse(this.x,this.y,this.radius*2)  }
   move(target) {
