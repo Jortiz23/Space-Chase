@@ -38,12 +38,12 @@ class Game {
   loadPauseScreen() {}
 }
 class Character {
-  constructor(x, y, img, radius, speed) {
-    Object.assign(this, { x, y, img, radius, speed });
+  constructor(x, y, color, radius, speed) {
+    Object.assign(this, { x, y, color, radius, speed });
   }
   draw() {
     //image(img, x, y, radius*2, radius*2);
-    fill(img)
+    fill(color)
     ellipse(x,y,radius);
   }
   move(target) {
