@@ -153,7 +153,7 @@ class SpaceStation extends Powerup {
   }
 }
 
-const player = new Character(30, 30, "blue", 10, 0.05);
+const player = new Character(30, 30, "green", 10, 0.05);
 const aliens = [
   new Character(300, 0, "rgb(250,190,80)", 17, 0.01),
   new Character(300, 300, "rgb(190,80,250)", 17, 0.03),
@@ -189,6 +189,15 @@ function draw() {
   aliens.forEach(alien => alien.draw());
   aliens.forEach(alien => alien.move(bomb || player));
   adjust();
+  asteroids.forEach(asteroid => asteroid.draw());
+  asteroids.forEach(asteroid => asteroid.move());
+  if (bomb) {
+    bomb.draw();
+    bomb.ttl--;
+    if (bomb.ttl < 0) {
+      bomb = undefined;
+    }
+  }
 }
 
 function adjust() {
