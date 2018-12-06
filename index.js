@@ -261,8 +261,8 @@ function createCharacters() {
     new Character(800, 600, "rgb(80,250,190)", 17, 0.02)
   ];
   asteroids = [
-    new Asteroid(400, 0, "brown", 15, -3, 1),
-    new Asteroid(300, 0, "brown", 15, 2, 8),
+    new Asteroid(600, 0, "brown", 15, -3, 1),
+    new Asteroid(100, 0, "brown", 15, 8, 8),
     new Asteroid(200, 0, "brown", 15, 3, 5)
   ];
   scoreboard = new Scoreboard();
