@@ -70,11 +70,11 @@ class Asteroid {
   }
   
   draw() {
-    //image(this.image, this.x, this.y, this.radius*2, this.radius*2);
-    this.image.onLoad = new function()
-    {
-        image(this.image, this.x, this.y, this.radius*2, this.radius*2);
-    }
+    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    //this.image.onLoad = new function()
+    //{
+    //    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    //}
     //this.image.src = source; 
   }
   move() {
@@ -166,11 +166,14 @@ class SpaceStation extends Powerup {
   }
 }
 
-function setup() {
+function preload(){
   bg = loadImage("gameover.jpg");
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroid.jpg");
+}
+
+function setup() {
   const canvas = createCanvas(800, 600);
   canvas.parent("sketch");
   createCharacters();
