@@ -186,6 +186,9 @@ function draw() {
   player.draw();
   player.move({ x: mouseX, y: mouseY });
   player.checkBounds();
+  aliens.forEach(alien => alien.draw());
+  aliens.forEach(alien => alien.move(bomb || player));
+  adjust();
 }
 
 function adjust() {
