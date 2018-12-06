@@ -1,6 +1,8 @@
 let width = 800;
 let height = 600;
 let bg;
+let alienSprite;
+let playerSprite;
 let player;
 let aliens;
 let asteroids;
@@ -36,12 +38,11 @@ class Game {
   loadPauseScreen() {}
 }
 class Character {
-  constructor(x, y, color, radius, speed) {
-    Object.assign(this, { x, y, color, radius, speed });
+  constructor(x, y, img, radius, speed) {
+    Object.assign(this, { x, y, img, radius, speed });
   }
   draw() {
-    fill(this.color);
-    ellipse(this.x, this.y, this.radius * 2);
+    image(img, x, y, radius*2, radius*2);
   }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
@@ -160,6 +161,8 @@ class SpaceStation extends Powerup {
 
 function setup() {
   bg = loadImage("gameover.jpg");
+  alienSprite = loadImage("UFO.png");
+  playerSprite = loadImage("spaceShip.png");
   const canvas = createCanvas(800, 600);
   canvas.parent("sketch");
   createCharacters();
@@ -255,11 +258,11 @@ function checkAsteroidOutOfBounds() {
 }
 
 function createCharacters() {
-  player = new Character(400, 300, "blue", 10, 0.05);
+  player = new Character(400, 300, playerSprite, 10, 0.05);
   aliens = [
-    new Character(0, 0, "rgb(250,190,80)", 17, 0.01),
-    new Character(0, 600, "rgb(190,80,250)", 17, 0.03),
-    new Character(800, 600, "rgb(80,250,190)", 17, 0.02)
+    new Character(0, 0, alienSprite, 17, 0.01),
+    new Character(0, 600, alienSprite, 17, 0.03),
+    new Character(800, 600, alienSprite, 17, 0.02)
   ];
   asteroids = [
     new Asteroid(600, 0, "brown", 15, -3, 1),
