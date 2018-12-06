@@ -68,8 +68,14 @@ class Asteroid {
   constructor(x, y, image, radius, xVel, yVel) {
     Object.assign(this, { x, y, image, radius, xVel, yVel });
   }
+  
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    //image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    this.image.onLoad = new function()
+    {
+        image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    }
+    //this.image.src = source; 
   }
   move() {
     this.x += this.xVel;
