@@ -3,6 +3,7 @@ let height = 600;
 let bg;
 let alienSprite;
 let playerSprite;
+let asteroidSprite;
 let player;
 let aliens;
 let asteroids;
@@ -44,7 +45,7 @@ class Character {
   draw() {
     //image(this.img, this.x, this.y, this.radius*2, this.radius*2);
     fill(this.color)
-    ellipse(this.x,this.y,this.radius)  }
+    ellipse(this.x,this.y,this.radius*2)  }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
     this.y += (target.y - this.y) * this.speed;
@@ -64,12 +65,11 @@ class Character {
 }
 
 class Asteroid {
-  constructor(x, y, color, radius, xVel, yVel) {
-    Object.assign(this, { x, y, color, radius, xVel, yVel });
+  constructor(x, y, img, radius, xVel, yVel) {
+    Object.assign(this, { x, y, img, radius, xVel, yVel });
   }
   draw() {
-    fill(this.color);
-    ellipse(this.x, this.y, this.radius * 2);
+    image(this.img, this.x, this.y, this.radius*2, this.radius*2);
   }
   move() {
     this.x += this.xVel;
@@ -164,6 +164,7 @@ function setup() {
   bg = loadImage("gameover.jpg");
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
+  asteroidSprite = loadImage("asteroid.jpg");
   const canvas = createCanvas(800, 600);
   canvas.parent("sketch");
   createCharacters();
@@ -272,11 +273,11 @@ function createCharacters() {
     new Character(800, 600, "red", 17, 0.02)
   ];
   asteroids = [
-    new Asteroid(600, 0, "brown", 15, -3, 1),
-    new Asteroid(200, 0, "brown", 15, 8, 8),
-    new Asteroid(0, 0, "brown", 15, 2, 8),
-    new Asteroid(800, 0, "brown", 15, -8, 5),
-    new Asteroid(400, 0, "brown", 15, 3, 5)
+    new Asteroid(600, 0, asteroid, 15, -3, 1),
+    new Asteroid(200, 0, asteroid, 15, 8, 8),
+    new Asteroid(0, 0, asteroid, 15, 2, 8),
+    new Asteroid(800, 0, asteroid, 15, -8, 5),
+    new Asteroid(400, 0, asteroid, 15, 3, 5)
   ];
   scoreboard = new Scoreboard();
   spaceStation = new SpaceStation(
