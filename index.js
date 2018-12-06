@@ -170,7 +170,7 @@ function preload(){
   bg = loadImage("gameover.jpg");
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
-  asteroidSprite = loadImage("asteroid.jpg");
+  asteroidSprite = loadImage("asteroidSprite.png");
 }
 
 function setup() {
