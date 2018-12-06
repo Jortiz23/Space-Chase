@@ -191,12 +191,21 @@ function draw() {
   adjust();
   asteroids.forEach(asteroid => asteroid.draw());
   asteroids.forEach(asteroid => asteroid.move());
+  checkAsteroidOutOfBounds();
   if (bomb) {
     bomb.draw();
     bomb.ttl--;
     if (bomb.ttl < 0) {
       bomb = undefined;
     }
+  }
+  adjust();
+  if (health.value > 0) {
+    scoreboard.updateScore();
+  }
+  scoreboard.retrieveScore();
+  if (health.value === 0) {
+    game.endGame();
   }
 }
 
