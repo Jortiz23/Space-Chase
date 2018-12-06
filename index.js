@@ -66,14 +66,14 @@ class Character {
 }
 
 class Asteroid {
-  constructor(x, y, color, radius, xVel, yVel) {
-    Object.assign(this, { x, y, color, radius, xVel, yVel });
+  constructor(x, y, image, radius, xVel, yVel) {
+    Object.assign(this, { x, y, image, radius, xVel, yVel });
   }
   
   draw() {
-    fill(this.color);
-    ellipse(this.x,this.y,this.radius*2);
-    //image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    //fill(this.color);
+    //ellipse(this.x,this.y,this.radius*2);
+    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
     //this.image.onLoad = new function()
     //{
     //    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
