@@ -43,7 +43,7 @@ class Character {
     Object.assign(this, { x, y, color, radius, speed });
   }
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+  //  image(this.image, this.x, this.y, this.radius*2, this.radius*2);
     fill(this.color)
     ellipse(this.x,this.y,this.radius*2)  }
   move(target) {
@@ -65,11 +65,12 @@ class Character {
 }
 
 class Asteroid {
-  constructor(x, y, image, radius, xVel, yVel) {
-    Object.assign(this, { x, y, image, radius, xVel, yVel });
+  constructor(x, y, img, radius, xVel, yVel) {
+    this.img = asteroidSprite;
+    Object.assign(this, { x, y, img, radius, xVel, yVel });
   }
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    image(this.img, this.x, this.y, this.radius*2, this.radius*2);
   }
   move() {
     this.x += this.xVel;
