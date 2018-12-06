@@ -285,16 +285,16 @@ function createCharacters() {
     new Character(800, 600, "red", 17, 0.02)
   ];
   asteroids = [
-    //new Asteroid(600, 0, asteroidSprite, 15, -3, 1),
-    //new Asteroid(200, 0, asteroidSprite, 15, 8, 8),
-    //new Asteroid(0, 0, asteroidSprite, 15, 2, 8),
-    //new Asteroid(800, 0, asteroidSprite, 15, -8, 5),
-    //new Asteroid(400, 0, asteroidSprite, 15, 3, 5)
-    new Asteroid(600, 0, "brown", 15, -3, 1),
-    new Asteroid(200, 0, "brown", 15, 8, 8),
-    new Asteroid(0, 0, "brown", 15, 2, 8),
-    new Asteroid(800, 0, "brown", 15, -8, 5),
-    new Asteroid(400, 0, "brown", 15, 3, 5)
+    new Asteroid(600, 0, asteroidSprite, 15, -3, 1),
+    new Asteroid(200, 0, asteroidSprite, 15, 8, 8),
+    new Asteroid(0, 0, asteroidSprite, 15, 2, 8),
+    new Asteroid(800, 0, asteroidSprite, 15, -8, 5),
+    new Asteroid(400, 0, asteroidSprite, 15, 3, 5)
+    //new Asteroid(600, 0, "brown", 15, -3, 1),
+    //new Asteroid(200, 0, "brown", 15, 8, 8),
+    //new Asteroid(0, 0, "brown", 15, 2, 8),
+    //new Asteroid(800, 0, "brown", 15, -8, 5),
+    //new Asteroid(400, 0, "brown", 15, 3, 5)
   ];
   scoreboard = new Scoreboard();
   spaceStation = new SpaceStation(
