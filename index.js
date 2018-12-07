@@ -43,9 +43,7 @@ class Character {
     Object.assign(this, { x, y, color, radius, speed });
   }
   draw() {
-    //image(this.image, this.x, this.y, this.radius*2, this.radius*2);
-    fill(this.color)
-    ellipse(this.x,this.y,this.radius*2)
+    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
   }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
@@ -71,14 +69,7 @@ class Asteroid {
   }
   
   draw() {
-    //fill(this.color);
-    //ellipse(this.x,this.y,this.radius*2);
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
-    //this.image.onLoad = new function()
-    //{
-    //    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
-    //}
-    //this.image.src = source; 
+    image(this.image, this.x, this.y, this.radius*2, this.radius*2)
   }
   move() {
     this.x += this.xVel;
@@ -272,17 +263,13 @@ function checkAsteroidOutOfBounds() {
 }
 
 function createCharacters() {
-  //player = new Character(400, 300, playerSprite, 10, 0.05);
-  player = new Character(400, 300, "blue", 10, 0.05);
+  player = new Character(400, 300, playerSprite, 10, 0.05);
   aliens = [
-    //new Character(0, 0, alienSprite, 17, 0.01),
-    //new Character(800, 0, alienSprite, 17, 0.04),
-    //new Character(0, 600, alienSprite, 17, 0.03),
-    //new Character(800, 600, alienSprite, 17, 0.02)
-    new Character(0, 0, "red", 17, 0.01),
-    new Character(800, 0, "red", 17, 0.04),
-    new Character(0, 600, "red", 17, 0.03),
-    new Character(800, 600, "red", 17, 0.02)
+    new Character(0, 0, alienSprite, 17, 0.01),
+    new Character(800, 0, alienSprite, 17, 0.04),
+    new Character(0, 600, alienSprite, 17, 0.03),
+    new Character(800, 600, alienSprite, 17, 0.02)
+  
   ];
   asteroids = [
     new Asteroid(600, 0, asteroidSprite, 15, -3, 1),
@@ -290,11 +277,7 @@ function createCharacters() {
     new Asteroid(0, 0, asteroidSprite, 15, 2, 8),
     new Asteroid(800, 0, asteroidSprite, 15, -8, 5),
     new Asteroid(400, 0, asteroidSprite, 15, 3, 5)
-    //new Asteroid(600, 0, "brown", 15, -3, 1),
-    //new Asteroid(200, 0, "brown", 15, 8, 8),
-    //new Asteroid(0, 0, "brown", 15, 2, 8),
-    //new Asteroid(800, 0, "brown", 15, -8, 5),
-    //new Asteroid(400, 0, "brown", 15, 3, 5)
+
   ];
   scoreboard = new Scoreboard();
   spaceStation = new SpaceStation(
