@@ -79,7 +79,7 @@ class Asteroid {
   }
   
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2)
+    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2);
   }
   move() {
     this.x += this.xVel;
