@@ -39,8 +39,8 @@ class Game {
   loadPauseScreen() {}
 }
 class Character {
-  constructor(x, y, color, radius, speed) {
-    Object.assign(this, { x, y, color, radius, speed });
+  constructor(x, y, image, radius, speed) {
+    Object.assign(this, { x, y, image, radius, speed });
   }
   draw() {
     image(this.image, this.x, this.y, this.radius*2, this.radius*2);
