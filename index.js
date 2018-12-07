@@ -261,7 +261,7 @@ function checkAsteroidOutOfBounds() {
       let newAsteroid = new Asteroid(
         Math.random() * width,
         0,
-        "brown",
+        asteroidSprite,
         15,
         Math.pow(-1, Math.floor(1 + Math.random() * 2)) *
         (1 + Math.random() * 8),
