@@ -146,7 +146,7 @@ class Healthpack {
     this.healthValue = 30;
     Object.assign(this, { x, y, radius });
   }
-  checkStationCollision() {
+  checkPackCollision() {
     this.draw();
     if (player.hasCollidedWith(health)) {
       healthSound.play();
@@ -154,7 +154,7 @@ class Healthpack {
       this.onGround = false;
     }
   }
-  checkForStation(){
+  checkForPack(){
     if (scoreboard.scoreText.innerHTML%500 === 0){
       if(!healthPack.onGround){
         healthPack.draw();
@@ -210,8 +210,8 @@ function draw() {
   if (health.value === 0) {
     game.endGame();
   }
-  healthPack.checkForStation();
-  healthPack.checkStationCollision();
+  healthPack.checkForPack();
+  healthPack.checkPackCollision();
 }
 
 function adjust() {
@@ -292,11 +292,6 @@ function createCharacters() {
 
   ];
   scoreboard = new Scoreboard();
-  healthPack = new Healthpack(
-    400,
-    300,
-    10,
-    10
-  );
+  healthPack = new Healthpack(400, 300, 10, 10);
   game = new Game();
 }
