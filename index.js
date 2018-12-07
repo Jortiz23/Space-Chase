@@ -64,6 +64,7 @@ class Character {
     }
   }
   hasCollidedWith(sprite2) {
+    console.log("HEALTH");
         return (
             this.x < sprite2.x + sprite2.radius*2 &&
             this.x + this.radius*2 > sprite2.x &&
@@ -291,6 +292,6 @@ function createCharacters() {
 
   ];
   scoreboard = new Scoreboard();
-  healthPack = new Healthpack(400, 300, 10, 10);
+  healthPack = new Healthpack(400, 300, 20, 10);
   game = new Game();
 }
