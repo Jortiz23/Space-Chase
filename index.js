@@ -147,7 +147,6 @@ class Healthpack {
     Object.assign(this, { x, y, radius });
   }
   checkPackCollision() {
-    this.draw();
     if (player.hasCollidedWith(health)) {
       healthSound.play();
       healthBar.value += this.healthValue;
