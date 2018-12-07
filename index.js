@@ -141,7 +141,7 @@ class Powerup extends Character {
 class SpaceStation extends Powerup {
   constructor(x, y, width, height) {
     super();
-    this.image = spacestationSprite;
+    this.image = asteroidSprite;
     this.onGround = false;
     this.healthValue = 30;
     Object.assign(this, {
@@ -166,7 +166,7 @@ function preload(){
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
-  spacestationSprite = loadImage("spacestation.png");
+ // spacestationSprite = loadImage("spacestation.png");
 }
 
 function setup() {
