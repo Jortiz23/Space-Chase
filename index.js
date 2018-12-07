@@ -181,6 +181,7 @@ function setup() {
   canvas.parent("sketch");
   createCharacters();
   noStroke();
+  frameRate(10);
 }
 
 function draw() {
