@@ -1,1 +1,19 @@
-
+h1{
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+body{
+  height: 800px;
+  background-image: linear-gradient(rgb(0,52,76),white);
+}
+h1 {
+    color: white;
+}
+#score, #highscore  {
+  color: lightblue;
+  font-size: 30px;
+}
+p{
+  color: white;
+  font-size: 20px;
+}
