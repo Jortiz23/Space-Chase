@@ -124,8 +124,8 @@ class Scoreboard {
   }
  raiseDifficulty(){
     if (this.scoreText.innerHTML%1000 === 0 ){
-      asteroids.push(new Asteroid(400,0,"brown",15,-4,8));
-      asteroids.push(new Asteroid(400,0,"brown",15,4,8));
+      asteroids.push(new Asteroid(400,0, asteroidSprite, 20,-4,8));
+      asteroids.push(new Asteroid(400,0,asteroidSprite, 20,4,8));
     }
   }
 }
