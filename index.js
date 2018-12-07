@@ -115,7 +115,7 @@ class Scoreboard {
     this.score = 0;
     this.scoreText.innerHTML = 0;
   }
-   updateScore() {
+  updateScore() {
     this.scoreMillisenconds++;
     if (this.scoreMiliseconds % 100 === 0) {
       this.score++;
@@ -123,47 +123,40 @@ class Scoreboard {
     Powerup.checkPowerups();
     this.scoreText.innerHTML = this.score;
   }
- raiseDifficulty(){
+  raiseDifficulty(){
     if (this.scoreText.innerHTML%1000 === 0 ){
       asteroids.push(new Asteroid(400,0, asteroidSprite, 20,-4,8));
       asteroids.push(new Asteroid(400,0,asteroidSprite, 20,4,8));
+      console.log(asteroids.length);
     }
-  }
-}
-class Powerup extends Character {
-  static checkPowerups() {
-    if (scoreboard.score % 5 === 0) {
-      spaceStation.drawPowerup();
-      spaceStation.onGround = true;
-    }
-  }
-  drawPowerup() {
-    this.x = Math.random * width;
-    this.y = Math.random * height;
-    this.draw();
   }
 }
 
-class SpaceStation extends Powerup {
-  constructor(x, y, width, height) {
-    super();
-    this.image = asteroidSprite;
+class SpaceStation {
+  constructor(x, y, radius) {
+    this.image = spacestationSprite;
     this.onGround = false;
     this.healthValue = 30;
-    Object.assign(this, {
-      x,
-      y,
-      width,
-      height
-    });
+    Object.assign(this, { x, y, radius });
   }
-  checkHealth() {
+  checkStationCollision() {
     this.draw();
     if (player.hasCollidedWith(health)) {
       healthSound.play();
       healthBar.value += this.healthValue;
       this.onGround = false;
     }
+  }
+  checkForStation(){
+    if (this.scoreText.innerHTML%500 === 0){
+      if(!spaceStation.onGround){
+        spaceStation.draw();
+        spaceStation.onGround = true;
+      }
+    }
+  }
+  draw() {
+    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2)
   }
 }
 
@@ -173,7 +166,7 @@ function preload(){
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
   decoySprite = loadImage("decoy.png")
- // spacestationSprite = loadImage("spacestation.png");
+  spacestationSprite = loadImage("spacestation.png");
 }
 
 function setup() {
@@ -291,8 +284,8 @@ function createCharacters() {
   ];
   scoreboard = new Scoreboard();
   spaceStation = new SpaceStation(
-    Math.random * width,
-    Math.random * height,
+    400,
+    300,
     10,
     10
   );
