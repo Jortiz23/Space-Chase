@@ -5,10 +5,11 @@ let alienSprite;
 let playerSprite;
 let asteroidSprite;
 let spacestationSprite;
+let decoySprite
 let player;
 let aliens;
 let asteroids;
-let bomb;
+let decoy;
 let scoreboard;
 let spaceStation;
 let game;
@@ -32,7 +33,7 @@ class Game {
   resetGame() {
     health.value += 100;
     scoreboard.resetScore();
-    bomb = undefined;
+    decoy = undefined;
     this.gameOver = false;
     createCharacters();
     loop();
@@ -171,6 +172,7 @@ function preload(){
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
+  decoySprite = loadImage("decoy.png")
  // spacestationSprite = loadImage("spacestation.png");
 }
 
@@ -188,16 +190,16 @@ function draw() {
   player.move({ x: mouseX, y: mouseY });
   player.checkBounds();
   aliens.forEach(alien => alien.draw());
-  aliens.forEach(alien => alien.move(bomb || player));
+  aliens.forEach(alien => alien.move(decoy || player));
   adjust();
   asteroids.forEach(asteroid => asteroid.draw());
   asteroids.forEach(asteroid => asteroid.move());
   checkAsteroidOutOfBounds();
-  if (bomb) {
-    bomb.draw();
-    bomb.ttl--;
-    if (bomb.ttl < 0) {
-      bomb = undefined;
+  if (decoy) {
+    decoy.draw();
+    decoy.ttl--;
+    if (decoy.ttl < 0) {
+      decoy = undefined;
     }
   }
   adjust();
@@ -237,9 +239,9 @@ function pushOff(c1, c2, isPlayer) {
 }
 
 function mouseClicked() {
-  if (!bomb && !game.gameOver) {
-    bomb = new Character(player.x, player.y, spacestationSprite, 10, 0);
-    bomb.ttl = frameRate() * 5;
+  if (!decoy && !game.gameOver) {
+    decoy = new Character(player.x, player.y, decoySprite, 10, 0);
+    decoy.ttl = frameRate() * 5;
   }
   if (game.gameOver) {
     game.resetGame();
