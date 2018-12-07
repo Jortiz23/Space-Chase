@@ -128,7 +128,6 @@ class Scoreboard {
     if (this.scoreMiliseconds % 100 === 0) {
       this.score++;
     }
-    Powerup.checkPowerups();
     this.scoreText.innerHTML = this.score;
   }
   raiseDifficulty(){
