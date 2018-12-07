@@ -45,7 +45,7 @@ class Character {
     Object.assign(this, { x, y, image, radius, speed });
   }
   draw() {
-    image(this.image, this.x, this.y, this.radius*2, this.radius*2);
+    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2);
   }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
