@@ -4,14 +4,14 @@ let bg;
 let alienSprite;
 let playerSprite;
 let asteroidSprite;
-let spacestationSprite;
+let healthPackSprite;
 let decoySprite
 let player;
 let aliens;
 let asteroids;
 let decoy;
 let scoreboard;
-let spaceStation;
+let healthPack;
 let game;
 
 class Game {
@@ -139,9 +139,9 @@ class Scoreboard {
   }
 }
 
-class SpaceStation {
+class Healthpack {
   constructor(x, y, radius) {
-    this.image = spacestationSprite;
+    this.image = healthPackSprite;
     this.onGround = false;
     this.healthValue = 30;
     Object.assign(this, { x, y, radius });
@@ -156,9 +156,9 @@ class SpaceStation {
   }
   checkForStation(){
     if (scoreboard.scoreText.innerHTML%500 === 0){
-      if(!spaceStation.onGround){
-        spaceStation.draw();
-        spaceStation.onGround = true;
+      if(!healthPack.onGround){
+        healthPack.draw();
+        healthPack.onGround = true;
       }
     }
   }
@@ -173,7 +173,7 @@ function preload(){
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
   decoySprite = loadImage("decoy.png")
-  spacestationSprite = loadImage("healthPack.png");
+  healthPackSprite = loadImage("healthPack.png");
 }
 
 function setup() {
@@ -210,8 +210,8 @@ function draw() {
   if (health.value === 0) {
     game.endGame();
   }
-  spaceStation.checkForStation();
-  spaceStation.checkStationCollision();
+  healthPack.checkForStation();
+  healthPack.checkStationCollision();
 }
 
 function adjust() {
@@ -292,7 +292,7 @@ function createCharacters() {
 
   ];
   scoreboard = new Scoreboard();
-  spaceStation = new SpaceStation(
+  healthPack = new Healthpack(
     400,
     300,
     10,
