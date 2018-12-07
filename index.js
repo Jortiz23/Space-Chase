@@ -173,7 +173,7 @@ function preload(){
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
   decoySprite = loadImage("decoy.png")
-  spacestationSprite = loadImage("spacestation.png");
+  spacestationSprite = loadImage("healthPack.png");
 }
 
 function setup() {
