@@ -155,7 +155,7 @@ class SpaceStation {
     }
   }
   checkForStation(){
-    if (scoreText.innerHTML%500 === 0){
+    if (scoreboard.scoreText.innerHTML%500 === 0){
       if(!spaceStation.onGround){
         spaceStation.draw();
         spaceStation.onGround = true;
