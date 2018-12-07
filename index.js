@@ -238,7 +238,7 @@ function pushOff(c1, c2, isPlayer) {
 
 function mouseClicked() {
   if (!bomb && !game.gameOver) {
-    bomb = new Character(player.x, player.y, "grey", 10, 0);
+    bomb = new Character(player.x, player.y, spacestationSprite, 10, 0);
     bomb.ttl = frameRate() * 5;
   }
   if (game.gameOver) {
@@ -271,7 +271,7 @@ function checkAsteroidOutOfBounds() {
 }
 
 function createCharacters() {
-  player = new Character(400, 300, playerSprite, 33, 0.05);
+  player = new Character(400, 300, playerSprite, 25, 0.05);
   aliens = [
     new Character(0, 0, alienSprite, 25, 0.01),
     new Character(800, 0, alienSprite, 25, 0.04),
