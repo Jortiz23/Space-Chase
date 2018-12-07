@@ -63,6 +63,14 @@ class Character {
       this.y = height;
     }
   }
+  hasCollidedWith(sprite2) {
+        return (
+            this.x < sprite2.x + sprite2.radius*2 &&
+            this.x + this.radius*2 > sprite2.x &&
+            this.y < sprite2.y + sprite2.radius*2 &&
+            this.radius*2 + this.y > sprite2.y
+        );
+    }
 }
 
 class Asteroid {
@@ -203,6 +211,8 @@ function draw() {
   if (health.value === 0) {
     game.endGame();
   }
+  spaceStation.checkForStation();
+  spaceStation.checkStationCollision();
 }
 
 function adjust() {
