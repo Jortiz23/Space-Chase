@@ -271,20 +271,20 @@ function checkAsteroidOutOfBounds() {
 }
 
 function createCharacters() {
-  player = new Character(400, 300, playerSprite, 10, 0.05);
+  player = new Character(400, 300, playerSprite, 33, 0.05);
   aliens = [
-    new Character(0, 0, alienSprite, 17, 0.01),
-    new Character(800, 0, alienSprite, 17, 0.04),
-    new Character(0, 600, alienSprite, 17, 0.03),
-    new Character(800, 600, alienSprite, 17, 0.02)
+    new Character(0, 0, alienSprite, 25, 0.01),
+    new Character(800, 0, alienSprite, 25, 0.04),
+    new Character(0, 600, alienSprite, 25, 0.03),
+    new Character(800, 600, alienSprite, 25, 0.02)
   
   ];
   asteroids = [
-    new Asteroid(600, 0, asteroidSprite, 15, -3, 1),
-    new Asteroid(200, 0, asteroidSprite, 15, 8, 8),
-    new Asteroid(0, 0, asteroidSprite, 15, 2, 8),
-    new Asteroid(800, 0, asteroidSprite, 15, -8, 5),
-    new Asteroid(400, 0, asteroidSprite, 15, 3, 5)
+    new Asteroid(600, 0, asteroidSprite, 20, -3, 1),
+    new Asteroid(200, 0, asteroidSprite, 20, 8, 8),
+    new Asteroid(0, 0, asteroidSprite, 20, 2, 8),
+    new Asteroid(800, 0, asteroidSprite, 20, -8, 5),
+    new Asteroid(400, 0, asteroidSprite, 20, 3, 5)
 
   ];
   scoreboard = new Scoreboard();
