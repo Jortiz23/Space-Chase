@@ -114,7 +114,7 @@ class Scoreboard {
     this.score = 0;
     this.scoreText.innerHTML = 0;
   }
-  updateScore() {
+   updateScore() {
     this.scoreMillisenconds++;
     if (this.scoreMiliseconds % 100 === 0) {
       this.score++;
@@ -122,8 +122,13 @@ class Scoreboard {
     Powerup.checkPowerups();
     this.scoreText.innerHTML = this.score;
   }
+ raiseDifficulty(){
+    if (this.scoreText.innerHTML%1000 === 0 ){
+      asteroids.push(new Asteroid(400,0,"brown",15,-4,8));
+      asteroids.push(new Asteroid(400,0,"brown",15,4,8));
+    }
+  }
 }
-
 class Powerup extends Character {
   static checkPowerups() {
     if (scoreboard.score % 5 === 0) {
@@ -178,6 +183,7 @@ function setup() {
 
 function draw() {
   background(bg);
+  scoreboard.raiseDifficulty();
   player.draw();
   player.move({ x: mouseX, y: mouseY });
   player.checkBounds();
