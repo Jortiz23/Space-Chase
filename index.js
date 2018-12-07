@@ -260,7 +260,7 @@ function checkAsteroidOutOfBounds() {
         Math.random() * width,
         0,
         asteroidSprite,
-        15,
+        20,
         Math.pow(-1, Math.floor(1 + Math.random() * 2)) *
         (1 + Math.random() * 8),
         1 + Math.random() * 8
