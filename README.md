@@ -1,5 +1,7 @@
 # Space-Chase
-A project written for CMSI 185 by Elena Martinez and Joseph Ortiz: https://jortiz23.github.io/Space-Chase/
+A project written for CMSI 185 by Elena Martinez and Joseph Ortiz
+
+Game playable at: https://jortiz23.github.io/Space-Chase/
 
 In this game, you act as a lone space emissary who has been targeted by nearby aliens after a short confrontation and a distastful comment about their mother. To make things worse, you have been chased into an asteroid field and now must dodge and weave to survive
 
