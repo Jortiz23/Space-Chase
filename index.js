@@ -38,8 +38,8 @@ class Game {
     createCharacters();
     loop();
   }
-  loadPauseScreen() {}
 }
+
 class Character {
   constructor(x, y, image, radius, speed) {
     Object.assign(this, { x, y, image, radius, speed });
@@ -64,14 +64,13 @@ class Character {
     }
   }
   hasCollidedWith(sprite2) {
-    console.log("HEALTH");
-        return (
-            this.x < sprite2.x + sprite2.radius*2 &&
-            this.x + this.radius*2 > sprite2.x &&
-            this.y < sprite2.y + sprite2.radius*2 &&
-            this.radius*2 + this.y > sprite2.y
-        );
-    }
+    return (
+      this.x < sprite2.x + sprite2.radius*2 &&
+      this.x + this.radius*2 > sprite2.x &&
+      this.y < sprite2.y + sprite2.radius*2 &&
+      this.radius*2 + this.y > sprite2.y
+    );
+  }
 }
 
 class Asteroid {
@@ -135,7 +134,6 @@ class Scoreboard {
     if (this.scoreText.innerHTML%1000 === 0 ){
       asteroids.push(new Asteroid(400,0, asteroidSprite, 20,-4,8));
       asteroids.push(new Asteroid(400,0,asteroidSprite, 20,4,8));
-      console.log(asteroids.length);
     }
   }
 }
@@ -252,7 +250,6 @@ function mouseClicked() {
 
 function checkAsteroidOutOfBounds() {
   for (let i = 0; i < asteroids.length; i++) {
-    //console.log(asteroids[i].x);
     if (
       asteroids[i].x - asteroids[i].radius > width ||
       asteroids[i].x + asteroids[i].radius < 0 ||
