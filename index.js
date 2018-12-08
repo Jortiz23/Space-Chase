@@ -5,7 +5,7 @@ let alienSprite;
 let playerSprite;
 let asteroidSprite;
 let healthPackSprite;
-let decoySprite
+let decoySprite;
 let player;
 let aliens;
 let asteroids;
@@ -21,7 +21,6 @@ class Game {
   }
   endGame() {
     this.gameOver = true;
-    //textFont("Avenir");
     textSize(120);
     textAlign(CENTER, CENTER);
     fill("white");
@@ -45,7 +44,13 @@ class Character {
     Object.assign(this, { x, y, image, radius, speed });
   }
   draw() {
-    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2);
+    image(
+      this.image,
+      this.x - this.radius,
+      this.y - this.radius,
+      this.radius * 2,
+      this.radius * 2
+    );
   }
   move(target) {
     this.x += (target.x - this.x) * this.speed;
@@ -65,10 +70,10 @@ class Character {
   }
   hasCollidedWith(sprite2) {
     return (
-      this.x < sprite2.x + sprite2.radius*2 &&
-      this.x + this.radius*2 > sprite2.x &&
-      this.y < sprite2.y + sprite2.radius*2 &&
-      this.radius*2 + this.y > sprite2.y
+      this.x < sprite2.x + sprite2.radius * 2 &&
+      this.x + this.radius * 2 > sprite2.x &&
+      this.y < sprite2.y + sprite2.radius * 2 &&
+      this.radius * 2 + this.y > sprite2.y
     );
   }
 }
@@ -77,9 +82,15 @@ class Asteroid {
   constructor(x, y, image, radius, xVel, yVel) {
     Object.assign(this, { x, y, image, radius, xVel, yVel });
   }
-  
+
   draw() {
-    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2);
+    image(
+      this.image,
+      this.x - this.radius,
+      this.y - this.radius,
+      this.radius * 2,
+      this.radius * 2
+    );
   }
   move() {
     this.x += this.xVel;
@@ -130,10 +141,10 @@ class Scoreboard {
     }
     this.scoreText.innerHTML = this.score;
   }
-  raiseDifficulty(){
-    if (this.scoreText.innerHTML%1000 === 0 ){
-      asteroids.push(new Asteroid(400,0, asteroidSprite, 20,-4,8));
-      asteroids.push(new Asteroid(400,0,asteroidSprite, 20,4,8));
+  raiseDifficulty() {
+    if (this.scoreText.innerHTML % 1000 === 0) {
+      asteroids.push(new Asteroid(400, 0, asteroidSprite, 20, -4, 8));
+      asteroids.push(new Asteroid(400, 0, asteroidSprite, 20, 4, 8));
     }
   }
 }
@@ -152,25 +163,31 @@ class Healthpack {
       this.onGround = false;
     }
   }
-  checkForPack(){
-    if (scoreboard.scoreText.innerHTML%500 === 0){
-      if(!healthPack.onGround){
+  checkForPack() {
+    if (scoreboard.scoreText.innerHTML % 500 === 0) {
+      if (!healthPack.onGround) {
         healthPack.draw();
         healthPack.onGround = true;
       }
     }
   }
   draw() {
-    image(this.image, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2)
+    image(
+      this.image,
+      this.x - this.radius,
+      this.y - this.radius,
+      this.radius * 2,
+      this.radius * 2
+    );
   }
 }
 
-function preload(){
+function preload() {
   bg = loadImage("gameover.jpg");
   alienSprite = loadImage("UFO.png");
   playerSprite = loadImage("spaceShip.png");
   asteroidSprite = loadImage("asteroidSprite.png");
-  decoySprite = loadImage("decoy.png")
+  decoySprite = loadImage("decoy.png");
   healthPackSprite = loadImage("healthPack.png");
 }
 
@@ -263,7 +280,7 @@ function checkAsteroidOutOfBounds() {
         asteroidSprite,
         20,
         Math.pow(-1, Math.floor(1 + Math.random() * 2)) *
-        (1 + Math.random() * 8),
+          (1 + Math.random() * 8),
         1 + Math.random() * 8
       );
       asteroids.push(newAsteroid);
@@ -278,7 +295,6 @@ function createCharacters() {
     new Character(800, 0, alienSprite, 25, 0.04),
     new Character(0, 600, alienSprite, 25, 0.03),
     new Character(800, 600, alienSprite, 25, 0.02)
-  
   ];
   asteroids = [
     new Asteroid(600, 0, asteroidSprite, 20, -3, 1),
@@ -286,7 +302,6 @@ function createCharacters() {
     new Asteroid(0, 0, asteroidSprite, 20, 2, 8),
     new Asteroid(800, 0, asteroidSprite, 20, -8, 5),
     new Asteroid(400, 0, asteroidSprite, 20, 3, 5)
-
   ];
   scoreboard = new Scoreboard();
   healthPack = new Healthpack(400, 300, 20, 10);
